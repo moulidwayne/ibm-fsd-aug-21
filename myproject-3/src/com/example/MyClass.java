@@ -22,5 +22,6 @@ public class MyClass  {
 		myFlyer.takeOff();
 		myFlyer.fly();
 		myFlyer.getDetails();
+		
 	}
 }
