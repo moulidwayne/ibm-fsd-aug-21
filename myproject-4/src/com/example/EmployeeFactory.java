@@ -6,5 +6,7 @@ public interface EmployeeFactory {
 	
 	public Employee createEmployee(Employee employee);
 	public Set<Employee> getEmployees();
+	
+	public Employee findEmployeeByEmployeeId(int employeeId);
 
 }
