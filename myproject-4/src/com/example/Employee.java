@@ -1,18 +1,15 @@
 package com.example;
 
-import java.util.Random;
-
-import com.example.exception.InvalidInputException;
-
-public class Employee {
+public class Employee implements Comparable {
 	private int employeeId;
 	private String firstName;
 	private String lastName;
 	private String email;
+
 	public Employee() {
 		super();
 	}
-	
+
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -51,5 +48,24 @@ public class Employee {
 				+ email + "]";
 	}
 
+	@Override
+	public int compareTo(Object arg0) {
 	
+		Employee e=(Employee)arg0;
+		if(this.getEmployeeId()<e.getEmployeeId())
+		{
+			return 1;
+		}
+		if(this.getEmployeeId()>e.getEmployeeId())
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
+		
+		
+	}
+
 }

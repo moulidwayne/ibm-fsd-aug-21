@@ -1,6 +1,7 @@
 package com.example.main;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
@@ -35,7 +36,7 @@ public class Tester {
 				employee.setEmail(email);
 				employee.setFirstName(firstName);
 				employee.setLastName(lastName);
-				employee.setEmployeeId(new Random().nextInt());
+				employee.setEmployeeId(new Random().nextInt(1000));
 				Employee tempEmployee = service.createEmployee(employee);
 				System.out.println(tempEmployee);
 				break;
