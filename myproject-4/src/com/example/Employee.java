@@ -13,19 +13,43 @@ public class Employee {
 		super();
 	}
 	
-	public void createEmployee(String firstName,String lastName,String email) throws InvalidInputException
-	{
-		employeeId=new Random().nextInt(1000);
-		this.firstName=firstName;
-		this.lastName=lastName;
-		if(email.indexOf("@")<0)
-		{
-			throw new InvalidInputException("wrong email");
-		}
-		this.email=email;
-		System.out.println("Employee Created Sucessfully");
-	
-		
+	public int getEmployeeId() {
+		return employeeId;
 	}
 
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+				+ email + "]";
+	}
+
+	
 }
