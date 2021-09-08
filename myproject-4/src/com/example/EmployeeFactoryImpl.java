@@ -80,8 +80,14 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 
 	@Override
 	public Employee deleteEmployyByEmployeeId(int employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee e1=findEmployeeByEmployeeId(employeeId);
+		if(e1==null)
+		{
+			throw new EmployeeNotFoundException("no employee found");
+		}
+		set.remove(e1);
+		System.out.println("employee removed sucessfully");
+		return e1;
 	}
 
 }
