@@ -13,5 +13,7 @@ public interface EmployeeFactory {
 	public Employee findEmployeeByEmail(String email);
 	public Employee updateEmployeeByEmployeeId(int employeeId);
 	public Employee deleteEmployyByEmployeeId(int employeeId);
+	public Employee deleteEmployyByEmployeeEmail(String email);
+	public void deleteAll();
 
 }

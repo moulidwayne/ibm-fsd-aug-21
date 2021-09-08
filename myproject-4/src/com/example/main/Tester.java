@@ -22,7 +22,9 @@ public class Tester {
 			System.out.println("2. Display employees");
 			System.out.println("3. Find Employee.");
 			System.out.println("4. Update Employee.");
-			System.out.println("5. Remove Employee.");
+			System.out.println("5. Remove Employee By ID.");
+			System.out.println("6. Remove Employee By Email.");
+			System.out.println("7. Remove All Employees.");
 			System.out.println("0. Exit");
 			System.out.print("Your Choice");
 			choice = scanner.nextInt();
@@ -75,6 +77,18 @@ public class Tester {
 					throw new EmployeeNotFoundException("employee with the given id is not found.");
 				}
 				System.out.println("Employee removed: \n"+tempEmployee2);
+				break;
+			case 6:
+				System.out.print("enter employee email: ");
+				email = scanner.next();
+				tempEmployee2 = service.deleteEmployyByEmployeeEmail(email);
+				if (tempEmployee2 == null) {
+					throw new EmployeeNotFoundException("employee with the given id is not found.");
+				}
+				System.out.println("Employee deleted: \n"+tempEmployee2);
+				break;
+			case 7:
+				service.deleteAll();
 				break;
 			case 0:
 				System.out.println("bye");

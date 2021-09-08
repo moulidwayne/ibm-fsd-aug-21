@@ -27,6 +27,10 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 	@Override
 	public Set<Employee> getEmployees() {
 
+		if(set.isEmpty())
+		{
+			System.out.println("employee set is empty.");
+		}
 		return set;
 	}
 
@@ -88,6 +92,32 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 		set.remove(e1);
 		System.out.println("employee removed sucessfully");
 		return e1;
+	}
+
+	@Override
+	public Employee deleteEmployyByEmployeeEmail(String email) {
+		Employee e1=findEmployeeByEmail(email);
+		if(e1==null)
+		{
+			throw new EmployeeNotFoundException("no employee found");
+		}
+		set.remove(e1);
+		System.out.println("employee removed sucessfully");
+		return e1;
+	}
+
+	@Override
+	public void deleteAll() {
+		if(set.isEmpty())
+		{
+			System.out.println("no elements are available.");
+		}
+		else
+		{
+			set.removeAll(getEmployees());
+			System.out.println("removed all employees sucessfully...");
+		}
+		
 	}
 
 }
