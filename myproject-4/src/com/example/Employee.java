@@ -10,6 +10,14 @@ public class Employee implements Comparable {
 		super();
 	}
 
+	public Employee(int employeeId, String firstName, String lastName, String email) {
+		super();
+		this.employeeId = employeeId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+
 	public int getEmployeeId() {
 		return employeeId;
 	}
