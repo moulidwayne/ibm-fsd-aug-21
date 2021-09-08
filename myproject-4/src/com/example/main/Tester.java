@@ -21,6 +21,7 @@ public class Tester {
 			System.out.println("1. Create employee.");
 			System.out.println("2. Display employees");
 			System.out.println("3. Find Employee.");
+			System.out.println("4. Update Employee.");
 			System.out.println("0. Exit");
 			System.out.print("Your Choice");
 			choice = scanner.nextInt();
@@ -55,6 +56,15 @@ public class Tester {
 					throw new EmployeeNotFoundException("employee with the given id is not found.");
 				}
 				System.out.println("Employee Found: \n"+tempEmployee2);
+				break;
+			case 4:
+				System.out.print("enter employee id: ");
+				id = scanner.nextInt();
+				tempEmployee2 = service.updateEmployeeByEmployeeId(id);
+				if (tempEmployee2 == null) {
+					throw new EmployeeNotFoundException("employee with the given id is not found.");
+				}
+				System.out.println("Employee updated: \n"+tempEmployee2);
 				break;
 			case 0:
 				System.out.println("bye");

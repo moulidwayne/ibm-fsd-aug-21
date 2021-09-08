@@ -1,14 +1,16 @@
 package com.example;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class EmployeeFactoryImpl implements EmployeeFactory {
-	private Set<Employee> set = new TreeSet<Employee>(); 
+import com.example.exception.EmployeeNotFoundException;
 
+public class EmployeeFactoryImpl implements EmployeeFactory {
+	private Set<Employee> set = new TreeSet<Employee>();
+
+	private static Scanner scanner=new Scanner(System.in);
 	@Override
 	public Employee createEmployee(Employee employee) {
 
@@ -56,6 +58,30 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 			}
 		}
 		return tempEmployee;
+	}
+
+	@Override
+	public Employee updateEmployeeByEmployeeId(int employeeId) {
+		// TODO Auto-generated method stub
+		Employee e1=findEmployeeByEmployeeId(employeeId);
+		if(e1==null)
+		{
+			throw new EmployeeNotFoundException("no employee found");
+		}
+		System.out.print("Enter new first name: ");
+		e1.setFirstName( scanner.next());
+		System.out.print("Enter new last name: ");
+		e1.setLastName( scanner.next());
+		System.out.print("Enter new email: ");
+		e1.setEmail( scanner.next());
+		System.out.println("updation is success");
+		return e1;
+	}
+
+	@Override
+	public Employee deleteEmployyByEmployeeId(int employeeId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
