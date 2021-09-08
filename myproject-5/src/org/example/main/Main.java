@@ -39,13 +39,23 @@ public class Main {
 				System.out.println("fees: ");
 				course.setEnrollmentFees(scanner.nextDouble());
 				List<Teacher> s=new ArrayList<Teacher>();
-				System.out.println("Teacher's first name");
-				teacher.setFirstName(scanner.next());
-				System.out.println("Teacher's last name");
-				teacher.setLastName(scanner.next());
-				System.out.println("Teacher'semail:");
-				teacher.setEmail(scanner.next());
-				s.add(teacher);
+				String c="n";
+				do {
+					
+					System.out.println("Teacher's first name");
+					teacher.setFirstName(scanner.next());
+					System.out.println("Teacher's last name");
+					teacher.setLastName(scanner.next());
+					System.out.println("Teacher'semail:");
+					teacher.setEmail(scanner.next());
+					
+					s.add(teacher);
+					System.out.println("would you like to add more teacher?('y/n'): ");
+					c=scanner.next();
+					
+				}while(!c.equals("n"));
+				
+			
 				course.setTeacher(s);
 				Course tempCourse=factory.createCourse(course);
 				System.out.println("course added sucessfully..");
@@ -53,8 +63,8 @@ public class Main {
 				break;
 
 			case 2:
-				Collection<Course> c=factory.displayAllCourses();
-				System.out.println(c);
+				Collection<Course> c1=factory.displayAllCourses();
+				System.out.println(c1);
 			case 0:
 				System.out.println("bye");
 			
