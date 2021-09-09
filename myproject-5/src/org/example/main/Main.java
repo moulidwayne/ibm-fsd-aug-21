@@ -26,6 +26,7 @@ public class Main {
 			
 			System.out.println("1. create a new course.");
 			System.out.println("2. Display all available courses.");
+			System.out.println("3. fid Course By ID.");
 			System.out.println("0. Exit");
 			System.out.print("your choice??  ");
 			choice = scanner.nextInt();
@@ -65,6 +66,13 @@ public class Main {
 			case 2:
 				Collection<Course> c1=factory.displayAllCourses();
 				System.out.println(c1);
+			case 3:
+				System.out.println("course id: ");
+				String id=scanner.next();
+				Course c2=factory.findCourseByCourseId(id);
+				System.out.println(c2);
+				break;
+				
 			case 0:
 				System.out.println("bye");
 			

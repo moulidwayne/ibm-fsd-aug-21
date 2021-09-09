@@ -8,5 +8,7 @@ public interface CourseFactory {
 	
 	public Course createCourse(Course course);
 	public Collection<Course> displayAllCourses();
+	
+	public Course findCourseByCourseId(String courseId);
 
 }

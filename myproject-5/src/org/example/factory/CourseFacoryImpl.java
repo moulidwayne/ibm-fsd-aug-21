@@ -30,4 +30,15 @@ private Map<String, Course> courses;
 		return courses.values();
 	}
 
+	@Override
+	public Course findCourseByCourseId(String courseId) {
+		
+		 Course tempCourse= courses.get(courseId);
+		 if(tempCourse==null)
+		 {
+			 System.out.println("course with the given id not found");
+		 }
+		return tempCourse;
+	}
+
 }
