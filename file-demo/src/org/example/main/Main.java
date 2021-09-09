@@ -67,8 +67,7 @@ public class Main {
 							bufferedWriter.newLine();
 							str=null;
 						}
-						bufferedWriter.close();
-						writer.close();
+					
 						
 					}
 
@@ -83,8 +82,9 @@ public class Main {
 			case 3:
 				Iterator<Employee> i = employees.iterator();
 				while (i.hasNext()) {
+					Employee e=i.next();
 					System.out.println(
-							"EmployeeId: " + i.next().getEmployeeId() + " First Name: " + i.next().getFirstName());
+							"EmployeeId: " + e.getEmployeeId() + " First Name: " + e.getFirstName());
 				}
 				break;
 			default:
