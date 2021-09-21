@@ -22,6 +22,7 @@ private static Scanner scanner=new Scanner(System.in);
             System.out.println("2. Display All employees.");
             System.out.println("3. Display by key: ");
             System.out.println("4. Delete by key: ");
+            System.out.println("5. Delete by key: ");
             System.out.print("enter your choice. ");
             choice=scanner.nextInt();
             switch (choice)
@@ -76,6 +77,10 @@ private static Scanner scanner=new Scanner(System.in);
                     String key=scanner.next();
                     service.removeEmployeeById(key);
 
+                    break;
+                case 5:
+                    System.out.print("enter key: ");
+                    employee1=service.updateById(scanner.next());
                     break;
                 case 0:
                     System.out.println("bye");

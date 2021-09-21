@@ -3,14 +3,11 @@ package com.company.factory;
 import com.company.EmptyCollectionException;
 import com.company.model.Employee;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.UUID;
+import java.util.*;
 
 public class EmployeeServiceImpl implements EmployeeService{
     private Map<String,Employee> employeeMap=null;
-
+    private static Scanner scanner=new Scanner(System.in);
     public EmployeeServiceImpl() {
         employeeMap=new TreeMap<String,Employee>();
     }
@@ -42,6 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
         else {
             employeeMap.remove(employeeId);
+
             System.out.println("deletion successful");
         }
 
@@ -50,6 +48,29 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Employee findByEmployeeId(String employeeId) {
         Employee tempEmployee=employeeMap.get(employeeId);
+        return tempEmployee;
+    }
+
+    @Override
+    public Employee updateById(String employeeId) {
+        Employee tempEmployee=employeeMap.get(employeeId);
+        if(tempEmployee==null)
+        {
+            System.out.println("not found");
+        }
+        else {
+            System.out.print(tempEmployee+"\n=====================================\n");
+            System.out.print("enter new id: ");
+            String id=scanner.next();
+            System.out.print("enter new name: ");
+            String name=scanner.next();
+            System.out.print("enter new salary: ");
+            double salary=scanner.nextDouble();
+            tempEmployee.setEmployeeId(id);
+            tempEmployee.setName(name);
+            tempEmployee.setSalary(salary);
+            System.out.println("updation successful successful");
+        }
         return tempEmployee;
     }
 }

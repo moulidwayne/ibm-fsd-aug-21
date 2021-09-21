@@ -10,4 +10,5 @@ public interface EmployeeService {
     public Collection<Employee> displayAllEmployees();
     public void removeEmployeeById(String employeeId);
     public Employee findByEmployeeId(String employeeId);
+    public Employee updateById(String employeeId);
 }
