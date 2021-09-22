@@ -3,35 +3,43 @@ package com.company;
 import com.company.factory.EmployeeFactory;
 
 import java.io.*;
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.Scanner;
+
+import static java.lang.System.*;
 
 public class Main {
-private static EmployeeFactory employeeFactory=null;
-private static Scanner scanner=new Scanner(System.in);
+private static final EmployeeFactory employeeFactory;
+
 static {
     employeeFactory=new EmployeeFactory();
 }
-    public static void main(String[] args) {
-        String name, address = null;
-        int choice = 0;
-        Employee employee = null;
+    public static void main(String[] args) throws IOException {
+        String name, address ;
+        int age,choice;
+        double salary;
+        Employee employee ;
+        InputStreamReader reader=new InputStreamReader(in);
+        BufferedReader bufferedReader=new BufferedReader(reader);
         do {
 
-            System.out.println("1. Create and Add Employee to List.");
-            System.out.println("2. Add List to employee.data file.");
-            System.out.println("3. Display All Employees from employee.data file");
-            System.out.println("0. Exit");
-            System.out.println("enter your choice: ");
-            choice=scanner.nextInt();
+            out.println("1. Create and Add Employee to List.");
+            out.println("2. Add List to employee.data file.");
+            out.println("3. Display All Employees from employee.data file");
+            out.println("0. Exit");
+            out.println("enter your choice: ");
+            choice=Integer.parseInt(bufferedReader.readLine());
             switch (choice) {
                 case 1:
-                    System.out.print("enter employee name: ");
-                    name = scanner.next();
-                    System.out.print("enter address: ");
-                    address = scanner.next();
-                    employee = new Employee(name, address);
+                    out.print("enter employee name: ");
+                    name = bufferedReader.readLine();
+                    out.print("enter address: ");
+                    address = bufferedReader.readLine();
+                    out.print("enter age");
+                    age=Integer.parseInt(bufferedReader.readLine());
+                    out.print("enter salary");
+                    salary=Double.parseDouble(bufferedReader.readLine());
+                    employee = new Employee(name, address,salary,age);
                     employeeFactory.createEmployee(employee);
                     break;
                 case 2:
@@ -40,21 +48,22 @@ static {
                         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
                         List<Employee> list = employeeFactory.getEmployees();
                         objectOutputStream.writeObject(list);
-                        System.out.println("list of employees written on employee.data file");
+                        out.println("list of employees written on employee.data file");
                     } catch (IOException ioException) {
-                        ioException.printStackTrace();
+                        err.println(ioException.getMessage());
                     }
                     break;
                 case 3:
                     try {
                         FileInputStream fileInputStream = new FileInputStream("employee.data");
                         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
                         List<Employee> employees = (List<Employee>) objectInputStream.readObject();
                         for (Employee e : employees) {
-                            System.out.println(e.getName() + " " + e.getAddress());
+                            System.out.println(e.getName() + " " + e.getAddress()+ " "+e.getSalary()+" "+e.getAge());
                         }
                     } catch (IOException | ClassNotFoundException ioException) {
-                        ioException.printStackTrace();
+                        err.println(ioException.getMessage());
                     }
                     break;
                 case 0:
