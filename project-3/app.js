@@ -11,4 +11,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 
-app.listen(3000);
+const PORT=3000;
+app.listen(PORT, () => 
+{
+    
+    console.log(`Listening on port ${PORT}...`);
+});
