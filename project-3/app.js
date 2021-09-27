@@ -8,12 +8,13 @@ const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/admin',adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-const PORT=3000;
-app.listen(PORT, () => 
-{
-    
-    console.log(`Listening on port ${PORT}...`);
+app.use((req, res, next) => {
+    res.status(404).send('<h1>Page not found</h1>');
+});
+
+app.listen(3000,()=>{
+    console.log('server started');
 });
