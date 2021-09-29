@@ -1,5 +1,6 @@
 const express=require('express');
 const app=express();
+app.use(express.json());
 const adminRoute=require('./routes/admin');
 const customerRoute=require('./routes/customerAdmin');
 app.use(adminRoute);
