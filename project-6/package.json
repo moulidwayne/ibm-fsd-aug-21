@@ -1,0 +1,18 @@
+{
+  "name": "vidly",
+  "version": "1.0.0",
+  "description": "This project is api for vidly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index,js"
+  },
+  "author": "Nilay Das",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^13.1.0",
+    "mongoose": "^6.0.8",
+    "nodemon": "^2.0.13"
+  }
+}
