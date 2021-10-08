@@ -28,18 +28,33 @@ public class App {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.print("First Name: ");
-                    String firstName = scanner.next();
-                    System.out.print("Last Name: ");
-                    String lastName = scanner.next();
-                    System.out.print("Email: ");
-                    String email = scanner.next();
-                    Customer customer = new Customer(firstName, lastName, email);
-                    Customer tempCustomer = app.customerDao.createCustomer(customer);
-                    System.out.println("Customer Created: " + customer);
+                    try
+                    {
+                        System.out.print("First Name: ");
+                        String firstName = scanner.next();
+                        System.out.print("Last Name: ");
+                        String lastName = scanner.next();
+                        System.out.print("Email: ");
+                        String email = scanner.next();
+                        System.out.print("Initial Amount: ");
+                        double amount = scanner.nextDouble();
+                        Customer customer = new Customer(firstName, lastName, email,amount);
+                        Customer tempCustomer = app.customerDao.createCustomer(customer);
+                        System.out.println("Customer Created: " + customer);
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("wrong input.");
+                    }
+
                     break;
                 case 2:
                     List<Customer> list=app.customerDao.displayAllCustomer();
+                    if(list.isEmpty())
+                    {
+                        System.out.println("no customer data available.");
+                        break;
+                    }
                     for(Customer c:list)
                     {
                         System.out.println(c);
