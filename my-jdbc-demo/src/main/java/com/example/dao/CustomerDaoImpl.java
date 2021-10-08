@@ -15,11 +15,12 @@ public class CustomerDaoImpl implements CustomerDao{
     @Override
     public Customer createCustomer(Customer customer) throws SQLException {
         connection=MyConnection.getMyConnection();
-        preparedStatement=connection.prepareStatement("insert into customer(first_name,last_name,email,deposited_amount) values(?,?,?,?)");
+        preparedStatement=connection.prepareStatement("insert into customer(first_name,last_name,email,deposited_amount,interest_rate) values(?,?,?,?,?)");
         preparedStatement.setString(1, customer.getFirstName());
         preparedStatement.setString(2, customer.getLastName());
         preparedStatement.setString(3, customer.getEmail());
         preparedStatement.setDouble(4,customer.getDepositedAmount());
+        preparedStatement.setDouble(5,customer.getInterestRate());
         preparedStatement.executeUpdate();
         return customer;
     }
@@ -32,7 +33,7 @@ public class CustomerDaoImpl implements CustomerDao{
         List<Customer> customers=new ArrayList<Customer>();
         while (resultSet.next())
         {
-            Customer customer=new Customer(resultSet.getString("first_name"),resultSet.getString("last_name"), resultSet.getString("email"),resultSet.getDouble("deposited_amount"));
+            Customer customer=new Customer(resultSet.getString("first_name"),resultSet.getString("last_name"), resultSet.getString("email"),resultSet.getDouble("deposited_amount"), resultSet.getDouble("interest_rate"));
             customers.add(customer);
         }
         return customers;

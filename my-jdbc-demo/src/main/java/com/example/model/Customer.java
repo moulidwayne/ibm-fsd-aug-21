@@ -12,4 +12,5 @@ public class Customer {
     private String lastName;
     private String email;
     private double depositedAmount;
+    private double interestRate;
 }

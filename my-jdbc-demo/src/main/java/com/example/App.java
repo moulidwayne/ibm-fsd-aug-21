@@ -38,7 +38,9 @@ public class App {
                         String email = scanner.next();
                         System.out.print("Initial Amount: ");
                         double amount = scanner.nextDouble();
-                        Customer customer = new Customer(firstName, lastName, email,amount);
+                        System.out.print("Interest Rate: ");
+                        double iRate = scanner.nextDouble();
+                        Customer customer = new Customer(firstName, lastName, email,amount,iRate);
                         Customer tempCustomer = app.customerDao.createCustomer(customer);
                         System.out.println("Customer Created: " + customer);
                     }
