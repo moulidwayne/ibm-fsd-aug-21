@@ -1,40 +1,61 @@
 package com.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import com.example.dao.CustomerDao;
+import com.example.dao.CustomerDaoImpl;
+import com.example.model.Customer;
+
+import java.sql.*;
+import java.util.List;
+import java.util.Scanner;
 
 
-public class App 
-{
-    public static void main( String[] args )
+public class App {
+    private CustomerDao customerDao;
+    private static Scanner scanner = new Scanner(System.in);
+
     {
-        try {
-            //step-1 Register the driver
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            //step-2 connect with the database
-           Connection connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/hr","root","root");
-           //step-3 create an object of statement
+        customerDao = new CustomerDaoImpl();
+    }
 
-            Statement statement=connection.createStatement();
-            //step-4 execute the query
-           ResultSet resultSet= statement.executeQuery("select * from employees LIMIT 20");
-
-           //step-5 retrive the data from resultset
-
-            System.out.println("EMPLOYEE ID\t FIRST_NAME\tLAST_NAME\tEMAIL\tSALARY");
-            while(resultSet.next())
-            {
-                System.out.println(resultSet.getInt("employee_id")+"\t"+resultSet.getString("first_name")
-                +"\t"+resultSet.getString("last_name")+"\t"+resultSet.getString("email")+"\t"+resultSet.getDouble("salary"));
+    public static void main(String[] args) throws SQLException {
+        App app = new App();
+        int choice = 0;
+        do {
+            System.out.println("1. Create Customer: ");
+            System.out.println("2. Display All Customer: ");
+            System.out.println("0.Exit: ");
+            System.out.print("Enter Your Choice: ");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.print("First Name: ");
+                    String firstName = scanner.next();
+                    System.out.print("Last Name: ");
+                    String lastName = scanner.next();
+                    System.out.print("Email: ");
+                    String email = scanner.next();
+                    Customer customer = new Customer(firstName, lastName, email);
+                    Customer tempCustomer = app.customerDao.createCustomer(customer);
+                    System.out.println("Customer Created: " + customer);
+                    break;
+                case 2:
+                    List<Customer> list=app.customerDao.displayAllCustomer();
+                    for(Customer c:list)
+                    {
+                        System.out.println(c);
+                    }
+                    break;
+                case 0:
+                    System.out.println("Bye.");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("invalid choice....");
+                    break;
             }
 
 
-        }
-        catch(Exception e)
-        {
-                e.printStackTrace();
-        }
+        } while (choice != 0);
+
     }
 }
