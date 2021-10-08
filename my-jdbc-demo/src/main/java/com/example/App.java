@@ -23,6 +23,7 @@ public class App {
         do {
             System.out.println("1. Create Customer: ");
             System.out.println("2. Display All Customer: ");
+            System.out.println("3. Find By Customer ID: ");
             System.out.println("0.Exit: ");
             System.out.print("Enter Your Choice: ");
             choice = scanner.nextInt();
@@ -61,6 +62,17 @@ public class App {
                     {
                         System.out.println(c);
                     }
+                    break;
+                case 3:
+                    System.out.print("Customer ID: ");
+                    int id = scanner.nextInt();
+                    Customer myCustomer=app.customerDao.findById(id);
+                    if(myCustomer==null)
+                    {
+                        System.err.println("\nno such customer available....");
+                        break;
+                    }
+                    System.out.println(myCustomer);
                     break;
                 case 0:
                     System.out.println("Bye.");

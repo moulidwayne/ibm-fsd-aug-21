@@ -38,4 +38,33 @@ public class CustomerDaoImpl implements CustomerDao{
         }
         return customers;
     }
+
+    @Override
+    public Customer findById(Integer id) throws SQLException {
+        connection=MyConnection.getMyConnection();
+        preparedStatement=connection.prepareStatement("select * from customer where customer_id=? limit 1");
+        preparedStatement.setInt(1,id);
+        resultSet= preparedStatement.executeQuery();
+        List<Customer> customers= new ArrayList<>();
+        while (resultSet.next())
+        {
+            Customer customer=new Customer(resultSet.getString("first_name"),resultSet.getString("last_name"), resultSet.getString("email"),resultSet.getDouble("deposited_amount"), resultSet.getDouble("interest_rate"));
+            customers.add(customer);
+        }
+        Customer theCustomer=null;
+        if(customers.isEmpty())
+        {
+            System.err.println("invalid customer id try again.");
+            return theCustomer;
+        }
+        else
+        {
+            theCustomer=customers.get(0);
+
+            return  theCustomer;
+        }
+
+
+
+    }
 }
