@@ -23,4 +23,15 @@ public class InstructorServiceImpl implements InstructorService{
     public List<Instructor> displayAllInstructor() {
         return instructorDao.displayAllInstructor();
     }
+
+
+    @Override
+    public Instructor getInstructorById(Integer instructorId) {
+        return instructorDao.getInstructorById(instructorId);
+    }
+
+    @Override
+    public Instructor getInstructorByUniqueId(String uniqueId) {
+        return instructorDao.getInstructorByUniqueId(uniqueId);
+    }
 }

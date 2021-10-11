@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.entity.Instructor;
+import org.example.exception.InstructorNotFoundException;
 import org.example.factory.MyFactory;
 import org.hibernate.Session;
 
@@ -25,7 +26,32 @@ public class InstructorDaoImpl implements  InstructorDao {
         Query query=session.createQuery("SELECT I FROM Instructor I ",Instructor.class);
         List<Instructor> list=query.getResultList();
         session.getTransaction().commit();
-
         return list;
+    }
+
+    @Override
+    public Instructor getInstructorById(Integer instructorId) {
+        Session session=MyFactory.getMyCurrentSession();
+        session.getTransaction().begin();
+        Instructor instructor=session.get(Instructor.class,instructorId);
+        session.getTransaction().commit();
+
+        return instructor;
+    }
+
+    @Override
+    public Instructor getInstructorByUniqueId(String uniqueId) {
+        Session session=MyFactory.getMyCurrentSession();
+        session.getTransaction().begin();
+        Query query=session.createQuery("FROM Instructor I WHERE I.id=:uId",Instructor.class);
+        query.setParameter("uId",uniqueId);
+        List<Instructor> list=query.getResultList();
+        if(list==null)
+        {
+                System.out.println("no such unique id available");
+                System.exit(0);
+
+        }
+        return list.get(0);
     }
 }
