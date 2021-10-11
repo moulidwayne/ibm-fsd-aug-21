@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.entity.Instructor;
 import org.example.entity.Student;
 import org.example.entity.Subject;
+import org.example.service.InstructorService;
+import org.example.service.InstructorServiceImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,29 +21,24 @@ public class App
     {
       try {
           BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(System.in));
-          SessionFactory sessionFactory=new Configuration().configure().addAnnotatedClass(Instructor.class).buildSessionFactory();
-          /*System.out.print("Enter First Name: ");
-          String firstName= bufferedReader.readLine();
-          System.out.print("Enter Last Name: ");
-          String lastName= bufferedReader.readLine();
-          System.out.print("Email: ");
-          String email= bufferedReader.readLine();
-          Student student=new Student(firstName,lastName,email);
-          Session session= sessionFactory.getCurrentSession();
-          session.getTransaction().begin();
-          session.save(student);
-          session.getTransaction().commit();
-          System.out.println("1 student created");*/
+          InstructorService service=new InstructorServiceImpl();
           Instructor instructor=new Instructor();
-        instructor.setInstructorId(100);
           instructor.setId(UUID.randomUUID().toString());
-          instructor.setInstructorName("John Doe");
+          System.out.println("Enter Instructor Name: ");
+          String name=bufferedReader.readLine();
+          System.out.println("Enter Subject: ");
+          String subject= bufferedReader.readLine();
+          instructor.setInstructorName(name);
+          instructor.setSubject(Subject.valueOf(subject));
           instructor.setSubject(Subject.ANGULAR);
-          Session session=sessionFactory.getCurrentSession();
-          session.getTransaction().begin();
-          session.save(instructor);
-          session.getTransaction().commit();
+          service.createInstructor(instructor);
           System.out.println("instructor created");
+
+          System.out.println("Displaying All Instructor...!");
+          for(Instructor i:service.displayAllInstructor())
+          {
+              System.out.println(i);
+          }
       }
       catch (Exception e)
       {
