@@ -12,4 +12,11 @@ import javax.persistence.Entity;
 public class Instructor extends UserEntity {
     @Column(name = "INSTRUCTOR_SALARY")
     private Double salary;
+
+    @Override
+    public String toString() {
+        return super.toString()+"Instructor{" +
+                "salary=" + salary +
+                '}';
+    }
 }

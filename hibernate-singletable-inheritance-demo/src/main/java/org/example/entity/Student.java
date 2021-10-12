@@ -18,4 +18,10 @@ public class Student extends UserEntity {
     @Column(name = "course_name")
     private String course;
 
+    @Override
+    public String toString() {
+        return super.toString()+"Student{" +
+                "course='" + course + '\'' +
+                '}';
+    }
 }

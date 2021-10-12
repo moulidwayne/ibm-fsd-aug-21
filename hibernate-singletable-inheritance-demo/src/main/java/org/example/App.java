@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.Query;
+import java.util.List;
 import java.util.Scanner;
 
 public class App
@@ -39,7 +41,7 @@ public class App
         session.persist(instructor);
         session.getTransaction().commit();
         System.out.println("done....!");*/
-        System.out.print("Enter ID: ");
+       /* System.out.print("Enter ID: ");
         int id=scanner.nextInt();
         session.getTransaction().begin();
         UserEntity userEntity=session.find(UserEntity.class,id);
@@ -115,6 +117,17 @@ public class App
                 session.getTransaction().commit();
             }
         }
+*/
+        session.getTransaction().begin();
+        Query query=session.createQuery("FROM UserEntity U");
+        List<UserEntity> userEntityList=query.getResultList();
+        session.getTransaction().commit();
+        for (UserEntity userEntity:userEntityList)
+        {
+            System.out.println(userEntity);
+        }
+
+
 
 
 
