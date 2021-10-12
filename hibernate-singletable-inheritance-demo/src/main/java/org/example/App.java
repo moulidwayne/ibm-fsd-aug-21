@@ -56,6 +56,7 @@ public class App
 
             if(userEntity instanceof Student)
             {
+                System.out.println("its student entity");
                 session= sessionFactory.getCurrentSession();
                 s=(Student) userEntity;
                 System.out.println("Enter New First Name: ");
@@ -76,6 +77,7 @@ public class App
             }
            else if(userEntity instanceof Instructor)
             {
+                System.out.println("its instructor entity");
                 session= sessionFactory.getCurrentSession();
                 i=(Instructor) userEntity;
                 System.out.println("Enter New First Name: ");
@@ -96,6 +98,7 @@ public class App
             }
             else
             {
+                System.out.println("its normal user");
                 session= sessionFactory.getCurrentSession();
                 u=userEntity;
                 System.out.println("Enter New First Name: ");
