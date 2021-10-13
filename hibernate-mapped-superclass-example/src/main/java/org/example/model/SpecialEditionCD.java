@@ -11,4 +11,10 @@ import javax.persistence.Table;
 public class SpecialEditionCD extends CD{
     @Column(name = "special_feature")
     private String specialFeature;
+
+    @Override
+    public String toString() {
+        return
+                super.toString()+"specialFeature: " + specialFeature;
+    }
 }

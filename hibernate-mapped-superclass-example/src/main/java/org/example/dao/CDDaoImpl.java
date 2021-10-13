@@ -6,6 +6,7 @@ import org.example.model.InternationalCD;
 import org.example.model.SpecialEditionCD;
 import org.hibernate.Session;
 
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class CDDaoImpl implements CDDao{
     private Session session;
     private Scanner scanner=new Scanner(System.in);
     @Override
-    public CD createSpecialCD(CD cd) {
+    public CD createCD(CD cd) {
 
         if(cd instanceof SpecialEditionCD)
         {
@@ -42,6 +43,26 @@ public class CDDaoImpl implements CDDao{
 
         }
         return cd;
+    }
+
+    @Override
+    public List<SpecialEditionCD> displayAllSpecialEditionCD() {
+        session= MyFactory.getMyCurrentSession();
+        session.getTransaction().begin();
+        Query query=session.createQuery("FROM SpecialEditionCD ");
+        List<SpecialEditionCD> specialEditionCDS=query.getResultList();
+        session.getTransaction().commit();
+        return specialEditionCDS;
+    }
+
+    @Override
+    public List<InternationalCD> displayAllInterNationalCD() {
+        session= MyFactory.getMyCurrentSession();
+        session.getTransaction().begin();
+        Query query=session.createQuery("FROM InternationalCD ");
+        List<InternationalCD> internationalCDS=query.getResultList();
+        session.getTransaction().commit();
+        return internationalCDS;
     }
 
 

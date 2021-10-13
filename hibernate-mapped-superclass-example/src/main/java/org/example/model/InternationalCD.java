@@ -15,4 +15,10 @@ import javax.persistence.Table;
 public class InternationalCD extends CD{
     @Column(name = "cd_laguage")
     private String language;
+
+    @Override
+    public String toString() {
+        return super.toString()+"language: " + language;
+
+    }
 }
