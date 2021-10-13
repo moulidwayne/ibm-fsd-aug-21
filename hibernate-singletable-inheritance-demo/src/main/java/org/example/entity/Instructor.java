@@ -5,10 +5,12 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "instructor_table")
 @Data
-@DiscriminatorValue(value = "INSTRUCTOR")
+//@DiscriminatorValue(value = "INSTRUCTOR")
 public class Instructor extends UserEntity {
     @Column(name = "INSTRUCTOR_SALARY")
     private Double salary;

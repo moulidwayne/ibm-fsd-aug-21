@@ -8,12 +8,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "student_table")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@DiscriminatorValue(value = "STUDENT")
+//@DiscriminatorValue(value = "STUDENT")
 public class Student extends UserEntity {
     @Column(name = "course_name")
     private String course;

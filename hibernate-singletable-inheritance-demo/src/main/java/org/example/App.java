@@ -21,26 +21,26 @@ public class App
                 .addAnnotatedClass(UserEntity.class).addAnnotatedClass(Instructor.class).addAnnotatedClass(Student.class)
                 .buildSessionFactory();
         Session session= sessionFactory.getCurrentSession();
-     /*   UserEntity userEntity =new UserEntity();
-        userEntity.setFirstName("A");
-        userEntity.setLastName("B");
-        userEntity.setEmail("C");
+        UserEntity userEntity =new UserEntity();
+        userEntity.setFirstName("John");
+        userEntity.setLastName("Doe");
+        userEntity.setEmail("john@email.com");
         Student student=new Student();
-        student.setFirstName("D");
-        student.setLastName("E");
-        student.setEmail("F");
+        student.setFirstName("Marry");
+        student.setLastName("Public");
+        student.setEmail("marry@email.com");
         student.setCourse("Learning Python");
         Instructor instructor=new Instructor();
-        instructor.setFirstName("G");
-        instructor.setLastName("H");
-        instructor.setEmail("I");
+        instructor.setFirstName("Mosh");
+        instructor.setLastName("Hamedeni");
+        instructor.setEmail("mosh@email.com");
         instructor.setSalary(14000.0);
         session.getTransaction().begin();
         session.persist(userEntity);
         session.persist(student);
         session.persist(instructor);
         session.getTransaction().commit();
-        System.out.println("done....!");*/
+        System.out.println("done....!");
        /* System.out.print("Enter ID: ");
         int id=scanner.nextInt();
         session.getTransaction().begin();
@@ -118,14 +118,14 @@ public class App
             }
         }
 */
-        session.getTransaction().begin();
+       /* session.getTransaction().begin();
         Query query=session.createQuery("FROM UserEntity U");
         List<UserEntity> userEntityList=query.getResultList();
         session.getTransaction().commit();
         for (UserEntity userEntity:userEntityList)
         {
             System.out.println(userEntity);
-        }
+        }*/
 
 
 
