@@ -35,6 +35,8 @@ private static Scanner scanner=new Scanner(System.in);
             System.out.println("1. Create New CD: ");
             System.out.println("2. Display All International CDS: ");
             System.out.println("3. Display All Special Edition CDS: ");
+            System.out.println("4. Display Special Edition CDS By ID: ");
+            System.out.println("5. Display International CDS By Id: ");
             System.out.println("0. Exit:  ");
             System.out.print("Enter Your Choice: ");
             choice=scanner.next();
@@ -75,6 +77,32 @@ private static Scanner scanner=new Scanner(System.in);
                     for(SpecialEditionCD s:specialEditionCDS)
                     {
                         System.out.println(s);
+                    }
+                    break;
+                case "4":
+                    System.out.println("Enter Special Edition CD ID: ");
+                    int id= scanner.nextInt();
+                    SpecialEditionCD specialEditionCD= service.findSpecialEditonCDById(id);
+                    if(specialEditionCD==null)
+                    {
+                        System.out.println("no such special edition cd available");
+                    }
+                    else
+                    {
+                        System.out.println(specialEditionCD);
+                    }
+                    break;
+                case "5":
+                    System.out.println("Enter International CD ID: ");
+                    id= scanner.nextInt();
+                    InternationalCD internationalCD= service.findInternationalCDById(id);
+                    if(internationalCD==null)
+                    {
+                        System.out.println("no such international cd available");
+                    }
+                    else
+                    {
+                        System.out.println(internationalCD);
                     }
                     break;
                 case "0":

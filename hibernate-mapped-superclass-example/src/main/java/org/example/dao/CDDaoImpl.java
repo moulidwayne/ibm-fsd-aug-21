@@ -65,5 +65,23 @@ public class CDDaoImpl implements CDDao{
         return internationalCDS;
     }
 
+    @Override
+    public SpecialEditionCD findSpecialEditonCDById(Integer id) {
+        session= MyFactory.getMyCurrentSession();
+        session.getTransaction().begin();
+        SpecialEditionCD specialEditionCD=session.get(SpecialEditionCD.class,id);
+        session.getTransaction().commit();
+        return specialEditionCD;
+    }
+
+    @Override
+    public InternationalCD findInternationalCDById(Integer id) {
+
+        session= MyFactory.getMyCurrentSession();
+        session.getTransaction().begin();
+        InternationalCD internationalCD=session.get(InternationalCD.class,id);
+        return internationalCD;
+    }
+
 
 }

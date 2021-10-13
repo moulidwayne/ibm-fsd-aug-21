@@ -30,4 +30,14 @@ public class CDServiceImpl implements CDService{
     public List<InternationalCD> displayAllInterNationalCD() {
         return cdDao.displayAllInterNationalCD();
     }
+
+    @Override
+    public SpecialEditionCD findSpecialEditonCDById(Integer id) {
+        return cdDao.findSpecialEditonCDById(id);
+    }
+
+    @Override
+    public InternationalCD findInternationalCDById(Integer id) {
+        return cdDao.findInternationalCDById(id);
+    }
 }

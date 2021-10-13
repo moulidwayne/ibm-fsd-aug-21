@@ -10,4 +10,6 @@ public interface CDService {
     public CD createCD(CD cd);
     public List<SpecialEditionCD> displayAllSpecialEditionCD();
     public List<InternationalCD> displayAllInterNationalCD();
+    public SpecialEditionCD findSpecialEditonCDById(Integer id);
+    public InternationalCD findInternationalCDById(Integer id);
 }
