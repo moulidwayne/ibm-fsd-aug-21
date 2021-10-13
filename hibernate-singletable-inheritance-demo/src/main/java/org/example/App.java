@@ -21,10 +21,10 @@ public class App
                 .addAnnotatedClass(UserEntity.class).addAnnotatedClass(Instructor.class).addAnnotatedClass(Student.class)
                 .buildSessionFactory();
         Session session= sessionFactory.getCurrentSession();
-        UserEntity userEntity =new UserEntity();
+       /* UserEntity userEntity =new UserEntity();
         userEntity.setFirstName("John");
         userEntity.setLastName("Doe");
-        userEntity.setEmail("john@email.com");
+        userEntity.setEmail("john@email.com");*/
         Student student=new Student();
         student.setFirstName("Marry");
         student.setLastName("Public");
@@ -36,7 +36,7 @@ public class App
         instructor.setEmail("mosh@email.com");
         instructor.setSalary(14000.0);
         session.getTransaction().begin();
-        session.persist(userEntity);
+      //  session.persist(userEntity);
         session.persist(student);
         session.persist(instructor);
         session.getTransaction().commit();

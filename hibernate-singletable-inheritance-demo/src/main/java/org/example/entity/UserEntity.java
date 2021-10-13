@@ -8,16 +8,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_table")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 //@DiscriminatorColumn(name = "USER_TYPE",discriminatorType = DiscriminatorType.STRING)
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Data
 //@DiscriminatorValue(value = "NORMAL_USER")
-public class UserEntity {
+public abstract class UserEntity {
    @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "first_name")
     private String firstName;
