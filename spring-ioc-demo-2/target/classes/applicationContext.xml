@@ -3,9 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="person" class="org.example.Person">
-        <property name="firstName" value="John"/>
-        <property name="lastName" value="Doe"/>
-        <property name="email" value="john@email.com"/>
+    <bean name="theCoach" class="org.example.model.VolleyBallCoach">
+        <constructor-arg name="fortuneService" ref="theFortuneService"/>
     </bean>
+    <bean name="theFortuneService" class="org.example.model.LuckyFortune"></bean>
 </beans>
