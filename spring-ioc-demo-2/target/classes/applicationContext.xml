@@ -3,8 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="theCoach" class="org.example.model.VolleyBallCoach">
-        <constructor-arg name="fortuneService" ref="theFortuneService"/>
+   <bean name="customer" class="org.example.model.Customer">
+       <constructor-arg name="customerId" value="10"/>
+       <constructor-arg name="customerName" value="John Doe"/>
+       <constructor-arg name="order" ref="order"/>
+   </bean>
+    <bean name="order" class="org.example.model.Order">
+        <constructor-arg name="orderId" value="100"/>
+        <constructor-arg name="orderName" value="Laptop"/>
+        <constructor-arg name="orderQuantity" value="10"/>
+        <constructor-arg name="orderValue" value="100.0"/>
     </bean>
-    <bean name="theFortuneService" class="org.example.model.LuckyFortune"></bean>
 </beans>
