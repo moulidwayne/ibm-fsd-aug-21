@@ -9,10 +9,19 @@ public class Order {
     public Order() {
     }
 
-    public Order(Integer orderId, String orderName, Integer orderQuantity, Double orderValue) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+
+    public void setOrderName(String orderName) {
         this.orderName = orderName;
+    }
+
+    public void setOrderQuantity(Integer orderQuantity) {
         this.orderQuantity = orderQuantity;
+    }
+
+    public void setOrderValue(Double orderValue) {
         this.orderValue = orderValue;
     }
 

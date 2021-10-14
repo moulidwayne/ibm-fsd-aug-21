@@ -8,9 +8,15 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer customerId, String customerName, Order order) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public void setOrder(Order order) {
         this.order = order;
     }
 
