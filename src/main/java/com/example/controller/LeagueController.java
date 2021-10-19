@@ -53,7 +53,7 @@ public class LeagueController {
         if (!errorList.isEmpty())
         {
             model.addAttribute("ERROR",errorList);
-            return "error";
+            return "registerLeague";
         }
         else
         {
