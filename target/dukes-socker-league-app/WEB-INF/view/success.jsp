@@ -12,10 +12,13 @@
     <title>success page</title>
 </head>
 <body>
-League Addedd Sucessfully<br/>
+League Added Successfully<br/>
 <hr/>
 Title:${LEAGUE.title}<br/>
 Year:${LEAGUE.year}<br/>
 Season:${LEAGUE.season}
+<br/>
+<a href="home">Go Back!!</a>
 </body>
+
 </html>

@@ -3,7 +3,7 @@ package com.example.model;
 public class League {
 
     private String title;
-    private String year;
+    private int year;
     private String season;
 
     public League() {
@@ -17,11 +17,11 @@ public class League {
         this.title = title;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
