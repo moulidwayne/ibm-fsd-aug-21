@@ -15,10 +15,13 @@
 <body>
 <form:form action="processForm" modelAttribute="student">
     First name: <form:input path="firstName" />
+    <form:errors path="firstName" cssStyle="color: red"/>
     <br><br>
     Last name: <form:input path="lastName" />
+    <form:errors path="lastName" cssStyle="color: red"/>
     <br><br>
     Email: <form:input path="email" />
+    <form:errors path="email" cssStyle="color: red"/>
     <br><br>
     Country:<form:select path="country">
         <form:option value="Brazil" label="Brazil" />
