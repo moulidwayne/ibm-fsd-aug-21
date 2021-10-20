@@ -1,15 +1,11 @@
 package com.example.controller;
-
 import com.example.model.League;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-
 @Controller
 public class LeagueController {
 
@@ -28,7 +24,7 @@ public class LeagueController {
     {
         int intYear=0;
         List<String> errorList=new ArrayList<>();
-        if((title.length()<5) ||(title==null))
+        if((title.length()<5))
         {
             errorList.add("name field can not be less that 5 char");
 
@@ -42,7 +38,7 @@ public class LeagueController {
         {
             errorList.add("year field must be integer");
         }
-        if (intYear<2021|| intYear>2021)
+        if (intYear!=2021)
         {
             errorList.add("year must be current year(2021)");
         }
