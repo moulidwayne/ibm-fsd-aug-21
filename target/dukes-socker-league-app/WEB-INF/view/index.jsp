@@ -28,7 +28,7 @@
 </ul>
 <h3>League Administrator</h3>
 <ul>
-  <li>Add a new league (TBA)</li>
+    <li><a href="addLeagueForm">Add a new league (TBA)</a></li>
 </ul>
 </body>
 </html>
