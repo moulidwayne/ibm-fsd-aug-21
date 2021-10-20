@@ -22,7 +22,7 @@
            <li style="color: red"><i><c:out value="${e}"/></i></li>
         </c:forEach>
     </c:if>
-    Year< <input type="text" name="year" /> <br/><br/>
+    Year<input type="text" name="year" /> <br/><br/>
    Season</label><select name="season">
     <option value="UNKNOWN">select...</option>
     <option value="Spring">Spring</option>
