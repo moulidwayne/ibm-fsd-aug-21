@@ -1,4 +1,7 @@
-<html>
+<%
+	response.sendRedirect("customer/list");
+%>
+<!-- <html>
 	<head>
 		<title>index page</title>
 	</head>
@@ -8,4 +11,4 @@
 		<input type="submit" value="sayHello">
 	</form>
 	</body>
-</html>
+</html> -->
