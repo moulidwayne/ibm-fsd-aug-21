@@ -5,8 +5,10 @@ import com.example.demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -34,13 +36,20 @@ public class EmployeeController {
         return "employee-form";
     }
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
+    public String saveEmployee(
+            @ModelAttribute("employee") @Valid Employee theEmployee,
+            BindingResult bindingResult) {
 
-        // save the employee
-        employeeService.createEmployee(theEmployee);
+        if (bindingResult.hasErrors()) {
+            return "employee-form";
+        }
+        else {
+            // save the employee
+            employeeService.createEmployee(theEmployee);
 
-        // use a redirect to prevent duplicate submissions
-        return "redirect:/employees/list";
+            // use a redirect to prevent duplicate submissions
+            return "redirect:/employees/list";
+        }
     }
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("employeeId") int theId,
