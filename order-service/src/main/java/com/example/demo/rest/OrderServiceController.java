@@ -3,6 +3,8 @@ package com.example.demo.rest;
 import com.example.demo.entity.OrderEntity;
 import com.example.demo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,14 +22,15 @@ public class OrderServiceController {
     }
 
     @PostMapping
-    public OrderEntity createOrder(@RequestBody OrderEntity orderEntity)
+    public ResponseEntity<OrderEntity> createOrder(@RequestBody OrderEntity orderEntity)
     {
         orderEntity.setId(UUID.randomUUID().toString());
-        return orderService.createOrder(orderEntity);
+        OrderEntity orderEntity1= orderService.createOrder(orderEntity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderEntity1);
     }
     @GetMapping
-    public List<OrderEntity> fetchAll()
+    public ResponseEntity<List<OrderEntity>> fetchAll()
     {
-        return orderService.fetchAllOrders();
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.fetchAllOrders());
     }
 }
