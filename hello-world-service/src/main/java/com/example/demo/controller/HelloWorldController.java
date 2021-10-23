@@ -36,7 +36,20 @@ public class HelloWorldController {
     @DeleteMapping("/persons/{id}")
     public Person deletePerson(@PathVariable("id") Integer id)
     {
-        Person p=personMap.remove(id);
+        Person person=personMap.remove(id);
+        return person;
+    }
+    @PutMapping("/persons/{id}")
+    public Person updateById(@PathVariable("id")Integer id,@RequestBody Person person)
+    {
+        Person p=personMap.get(id);
+        if(p!=null)
+        {
+            p.setFirstName(person.getFirstName());
+            p.setLastName(person.getLastName());
+            p.setEmail(person.getEmail());
+        }
         return p;
     }
+
 }
