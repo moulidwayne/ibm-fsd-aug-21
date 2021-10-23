@@ -33,4 +33,10 @@ public class HelloWorldController {
         Person person=personMap.get(id);
         return person;
     }
+    @DeleteMapping("/persons/{id}")
+    public Person deletePerson(@PathVariable("id") Integer id)
+    {
+        Person p=personMap.remove(id);
+        return p;
+    }
 }
