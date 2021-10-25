@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/playground
+
+  application:
+    name: customer-service
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://admin:12345@localhost:8761/eureka
+server:
+  port: 8082
