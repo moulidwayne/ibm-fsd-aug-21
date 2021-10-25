@@ -11,9 +11,9 @@ spring:
     url: jdbc:mysql://localhost:3306/hr
     username: root
     password: root@1234
-  jpa:
-    hibernate:
-      ddl-auto: create
+  #jpa:
+   # hibernate:
+    #  ddl-auto: create
 eureka:
   client:
     register-with-eureka: true
