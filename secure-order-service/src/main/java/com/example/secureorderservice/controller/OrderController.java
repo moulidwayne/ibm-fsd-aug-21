@@ -29,7 +29,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<OrderDto> createNewOrder(@RequestBody OrderDto orderDto)
     {
-        orderDto.setId(UUID.randomUUID().toString());
+        orderDto.setUniqueId(UUID.randomUUID().toString());
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Order order=modelMapper.map(orderDto,Order.class);
         orderService.createOrder(order);
@@ -41,6 +41,25 @@ public class OrderController {
     {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         List<Order> orders=orderService.fetchOrders();
+        List<OrderDto> orderDtos=new ArrayList<>();
+        for(Order o:orders)
+        {
+            orderDtos.add(modelMapper.map(o,OrderDto.class));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(orderDtos);
+    }
+    @GetMapping("/{uniqueId}")
+    public ResponseEntity<OrderDto> findByUniqueId(@PathVariable("uniqueId") String uniqueId)
+    {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        Order order=orderService.findOrderByOrderId(uniqueId);
+        return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(order,OrderDto.class));
+    }
+    @GetMapping("/find/{orderName}")
+    public ResponseEntity<List<OrderDto>> findByName(@PathVariable("orderName")String orderName)
+    {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        List<Order> orders=orderService.findByOrderName(orderName);
         List<OrderDto> orderDtos=new ArrayList<>();
         for(Order o:orders)
         {

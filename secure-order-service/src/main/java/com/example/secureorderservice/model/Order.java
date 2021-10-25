@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "order_table")
 public class Order {
     @Column(name = "unique_id",unique = true)
-    private String id;
+    private String uniqueId;
     @Id
     @GeneratedValue
     @Column(name = "order_id")

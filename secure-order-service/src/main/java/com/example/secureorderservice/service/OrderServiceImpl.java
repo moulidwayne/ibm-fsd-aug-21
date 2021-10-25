@@ -22,7 +22,6 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Order createOrder(Order order) {
-        order.setId(UUID.randomUUID().toString());
         return orderDao.save(order);
     }
 
@@ -32,16 +31,17 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public Order findOrderById(Integer orderId) {
-        return orderDao.getById(orderId);
+    public Order findOrderByOrderId(String orderId) {
+        return orderDao.findByUniqueId(orderId);
     }
 
     @Override
     public Order removeOrder(Integer orderId) {
-        Order order=orderDao.getById(orderId);
-        orderDao.delete(order);
-        return order;
+        return null;
     }
+
+
+
 
     @Override
     public Order updateOrder(Integer orderId, Order order) {
@@ -50,5 +50,10 @@ public class OrderServiceImpl implements OrderService{
         tempOrder.setOrderPrice(order.getOrderPrice());
         orderDao.save(tempOrder);
         return tempOrder;
+    }
+
+    @Override
+    public List<Order> findByOrderName(String orderName) {
+        return orderDao.findByOrderName(orderName);
     }
 }

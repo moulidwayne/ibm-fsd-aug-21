@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class OrderDto {
-    private String id;
+    private String uniqueId;
     private String orderName;
     private Double orderPrice;
 
