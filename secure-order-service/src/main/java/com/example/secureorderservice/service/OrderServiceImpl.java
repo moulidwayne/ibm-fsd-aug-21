@@ -1,6 +1,7 @@
 package com.example.secureorderservice.service;
 
 import com.example.secureorderservice.dao.OrderDao;
+import com.example.secureorderservice.exception.OrderNotFoundException;
 import com.example.secureorderservice.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,20 +33,36 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Order findOrderByOrderId(String orderId) {
-        return orderDao.findByUniqueId(orderId);
+        Order order=orderDao.findByUniqueId(orderId);
+        if (order==null)
+        {
+            throw new OrderNotFoundException("order with the "+orderId+" is not found");
+        }
+        return order;
     }
 
     @Override
-    public Order removeOrder(Integer orderId) {
-        return null;
+    public Order removeOrder(String id) {
+        Order order=orderDao.findByUniqueId(id);
+        if (order==null)
+        {
+            throw new OrderNotFoundException("order with the "+id+" is not found");
+        }
+        orderDao.delete(order);
+        return order;
     }
 
 
 
 
     @Override
-    public Order updateOrder(Integer orderId, Order order) {
-        Order tempOrder=orderDao.getById(orderId);
+    public Order updateOrder(String id, Order order) {
+
+        Order tempOrder=orderDao.findByUniqueId(id);
+        if (order==null)
+        {
+            throw new OrderNotFoundException("order with the "+id+" is not found");
+        }
         tempOrder.setOrderName(order.getOrderName());
         tempOrder.setOrderPrice(order.getOrderPrice());
         orderDao.save(tempOrder);

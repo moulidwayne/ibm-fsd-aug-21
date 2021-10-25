@@ -8,8 +8,8 @@ public interface OrderService {
     public Order createOrder(Order order);
     public List<Order> fetchOrders();
     public Order findOrderByOrderId(String orderId);
-    public Order removeOrder(Integer orderId);
-    public Order updateOrder(Integer orderId,Order order);
+    public Order removeOrder(String id);
+    public Order updateOrder(String id,Order order);
     public List<Order> findByOrderName(String orderName);
 
 }

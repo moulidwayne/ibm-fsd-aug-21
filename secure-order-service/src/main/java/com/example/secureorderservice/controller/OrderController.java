@@ -67,4 +67,11 @@ public class OrderController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(orderDtos);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<OrderDto> deleteOrder(@PathVariable("id") String id)
+    {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        Order order=orderService.removeOrder(id);
+        return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(order,OrderDto.class));
+    }
 }
