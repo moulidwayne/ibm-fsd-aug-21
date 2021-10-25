@@ -74,4 +74,12 @@ public class OrderController {
         Order order=orderService.removeOrder(id);
         return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(order,OrderDto.class));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<OrderDto> updateOrder(@PathVariable("id")String id, @RequestBody OrderDto orderDto)
+    {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        Order order= orderService.updateOrder(id,modelMapper.map(orderDto,Order.class));
+        return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(order,OrderDto.class));
+    }
 }

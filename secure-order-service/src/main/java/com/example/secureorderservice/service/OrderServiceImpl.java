@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrderService{
     public Order updateOrder(String id, Order order) {
 
         Order tempOrder=orderDao.findByUniqueId(id);
-        if (order==null)
+        if (tempOrder==null)
         {
             throw new OrderNotFoundException("order with the "+id+" is not found");
         }
