@@ -12,3 +12,11 @@ spring:
   devtools:
     restart:
       enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/hr
+    username: root
+    password: root@1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
