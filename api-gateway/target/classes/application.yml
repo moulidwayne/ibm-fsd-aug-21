@@ -1,0 +1,22 @@
+server:
+  port: 8010
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: ApiGateway
+  cloud.gateway:
+    discovery:
+      locator:
+        enabled: true
+    routes:
+    - id: coupon-ws
+      uri: lb://COUPON-WS
+      predicates:
+        - Path=/coupons/**
+    - id: product-ws
+      uri: lb://PRODUCT-WS
+      predicates:
+        - Path=/products/**
