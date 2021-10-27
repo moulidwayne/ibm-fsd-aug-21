@@ -33,16 +33,15 @@ public class CouponController {
 		return ResponseEntity
 				.ok("coupon service is up and running on port: " + environment.getProperty("local.server.port"));
 	}
+
 	@PostMapping("/")
-	public ResponseEntity<Coupon> createCoupon(@RequestBody Coupon coupon)
-	{
+	public ResponseEntity<Coupon> createCoupon(@RequestBody Coupon coupon) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(couponService.createCoupon(coupon));
 	}
+
 	@GetMapping("/{couponCode}")
-	public Coupon fetchCouponByCouponCode(@PathVariable("couponCode") String couponCode)
-	{
+	public Coupon fetchCouponByCouponCode(@PathVariable("couponCode") String couponCode) {
 		return couponService.getCouponByCode(couponCode);
 	}
-	
 
 }

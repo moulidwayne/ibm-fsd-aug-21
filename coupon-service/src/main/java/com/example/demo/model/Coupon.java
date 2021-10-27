@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +21,12 @@ public class Coupon {
 	@Column(name = "date_of_expiration")
 	private String expireDate;
 	@Column(name = "discount")
-	private Double discount;
+	private BigDecimal discount;
+	
 	public Coupon() {
-		
+		super();
 	}
-	public Coupon(int couponId, String couponCode, String expireDate, Double discount) {
+	public Coupon(int couponId, String couponCode, String expireDate, BigDecimal discount) {
 		super();
 		this.couponId = couponId;
 		this.couponCode = couponCode;
@@ -48,13 +51,12 @@ public class Coupon {
 	public void setExpireDate(String expireDate) {
 		this.expireDate = expireDate;
 	}
-	public Double getDiscount() {
+	public BigDecimal getDiscount() {
 		return discount;
 	}
-	public void setDiscount(Double discount) {
+	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
-	
 	
 
 }
